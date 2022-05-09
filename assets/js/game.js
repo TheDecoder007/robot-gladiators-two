@@ -116,6 +116,23 @@ for (var i = 0; i < enemyInfo.length; i++) {
     endGame();
 };
 var endGame = function() {
+
+    // check local storage for high score, if not there, use 0
+    var highScore = localStorage.getItem("highscore");
+    if (highScore === null) {
+        highScore = 0;
+    }
+//if player has more $ than high score, player now has new high score
+    if (playerInfo.money > highScore) {
+        localStorage.setItem("highscore", playerInfo.money);
+        localStorage.setItem("name", playerInfo.name);
+
+        alert(playerInfo.name + " has high score of " + playerInfo.money + "!");
+    }
+        else {
+            alert(playerInfo.name + " did not beat high score of " + highScore); 
+        }
+
     if (playerInfo.health > 0) {
     window.alert("Great Job, you survived! Your score is " + playerInfo.money + ".");
     }
@@ -129,6 +146,7 @@ var playAgainConfirm = window.confirm("Do you want to play again?");
     else { 
         window.alert("Thank you for playing!");
     }
+
 };
 
 var shop = function() {
