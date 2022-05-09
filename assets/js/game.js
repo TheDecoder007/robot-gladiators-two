@@ -136,8 +136,20 @@ var shop = function() {
         return value;
     };
 
+        var getPlayerName = function() {
+            var name = "";
+
+            // add loop 
+            while (name === "" || name === null) {
+                name = prompt("What is your robots name?");
+            }
+
+            console.log("your name is " + name);
+            return name;
+        }; 
+
     var playerInfo = {
-        name: window.prompt("What is your robots name?"),
+        name: getPlayerName(),
         health: 100,
         attack: 25,
         money: 10,
